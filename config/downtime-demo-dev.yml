@@ -1,3 +1,39 @@
+
+server:
+  port: 8100
+
+spring:
+  application:
+    name: downtime-demo
+  messages:
+    basename: i18n/messages
+  rabbitmq:
+    host: 192.168.3.2
+    username: dev
+    password: dev
+    virtual-host: dev
+    port: 5672
+  zipkin:
+    sender:
+      type: rabbit
+    rabbitmq:
+      queue: zipkin
+  sleuth:
+    sampler:
+      probability: 1.0
+
+eureka:
+  instance:
+    hostname: downtime-demo
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+       defaultZone: http://192.168.3.68:8761/eureka/
+
+
+
 git:
   config:
     test: 非基础配置
