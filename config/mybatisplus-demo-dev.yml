@@ -22,7 +22,7 @@ spring:
       flush-mode: on_save
       namespace: spring:session
   rabbitmq:
-    host: 192.168.3.2
+    host: 182.92.217.197
     username: dev
     password: dev
     virtual-host: dev
@@ -36,41 +36,45 @@ spring:
     sampler:
       probability: 1.0
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.3.3:5432/faxin_test?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
-    username: postgres
-    password: 123456
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.0.32:1521/orcl
+    username: xdl2019
+    password: xdl2019
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-          ## 连接池名字
-     pool-name: MyHikariCP
-          ## 最小空闲连接数量
-     minimum-idle: 10
-         ## 空闲连接存活最大时间，默认600000（10分钟）
-     idle-timeout: 600000
-          ## 连接池最大连接数，默认是10
-     maximum-pool-size: 100
-          ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-     max-lifetime: 1800000
-         ## 数据库连接超时时间,默认30秒，即30000
+      ## 连接池名字
+      pool-name: MyHikariCP
+      ## 最小空闲连接数量
+      minimum-idle: 10
+      ## 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 600000
+      ## 连接池最大连接数，默认是10
+      maximum-pool-size: 100
+      ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      ## 数据库连接超时时间,默认30秒，即30000
     connection-timeout: 30000
-
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.100.90:9300,192.168.100.91:9300,192.168.100.97:9300
+      cluster-name: xdl_cluster
 
   messages:
     basename: i18n/messages
-   # 防止乱码
+    # 防止乱码
   http:
     encoding:
       charset: utf-8
       force: true
       enabled: true
   redis:
-    port: 6379
-    host: 127.0.0.1
+    port: 4307
+    host: 182.92.217.197
+    password: redis123456
     database: 0
     lettuce:
       pool:
-         # 连接池最大连接数默认为8，负数代表不限制
+        # 连接池最大连接数默认为8，负数代表不限制
         max-active: 8
         # 连接池最大阻塞等待时间(使用负值表示没有限制) 默认为-1
         max-wait: -1ms
@@ -78,6 +82,7 @@ spring:
         max-idle: 8
         # 连接池中的最小空闲连接 默认为 0
         min-idle: 0
+
 
 eureka:
   instance:
@@ -87,7 +92,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
-       defaultZone: http://192.168.3.68:8761/eureka/
+      defaultZone: http://192.168.3.68:8761/eureka/
 
 management:
   endpoints:
@@ -95,5 +100,5 @@ management:
       exposure:
         include: "*"
   endpoint:
-      health:
-        show-details: always
+    health:
+      show-details: always
