@@ -18,8 +18,6 @@ spring:
     name: mybatisplus-demo
   messages:
     basename: i18n/messages
-  session:
-    store-type: redis
   redis:
     port: 4307
     host: 182.92.217.197
