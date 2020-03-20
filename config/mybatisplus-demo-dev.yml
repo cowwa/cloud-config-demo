@@ -16,6 +16,8 @@ thread:
 spring:
   application:
     name: mybatisplus-demo
+  messages:
+    basename: i18n/messages
   session:
     store-type: redis
   redis:
@@ -71,9 +73,6 @@ spring:
     elasticsearch:
       cluster-nodes: 192.168.100.90:9300,192.168.100.91:9300,192.168.100.97:9300
       cluster-name: xdl_cluster
-
-  messages:
-    basename: i18n/messages
     # 防止乱码
   http:
     encoding:
