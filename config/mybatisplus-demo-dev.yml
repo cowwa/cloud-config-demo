@@ -18,9 +18,7 @@ spring:
     name: mybatisplus-demo
   session:
     store-type: redis
-    redis:
-      flush-mode: on_save
-      namespace: spring:session
+
   rabbitmq:
     host: 182.92.217.197
     username: dev
